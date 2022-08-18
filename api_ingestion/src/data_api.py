@@ -10,7 +10,7 @@ from typing import List, Dict
 
 class ApiClient:
     """Contains methods to help get and clean data from API """
-    
+
     def __init__(self, url: str) -> None:
         self.url = url
 
@@ -42,12 +42,14 @@ class ApiClient:
         try:
             data = response_dict["data"]
         except KeyError:
-            raise KeyError('Response does not contain "data" key. Is this a successfulß response?')
+            raise KeyError(
+                'Response does not contain "data" key. Is this a successfulß response?'
+            )
 
         finally:
             return data
 
-    def process(self, url: str = None) -> dict:
+    def get_data(self, url: str = None) -> dict:
         """ Runs all steps """
         if url is None:
             url = self.url
@@ -56,5 +58,4 @@ class ApiClient:
 
         data = self.transform_response(response=response)
 
-        return data     
-
+        return data

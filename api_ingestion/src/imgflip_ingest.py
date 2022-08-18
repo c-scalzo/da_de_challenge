@@ -34,12 +34,19 @@ def process(
 ):
     """Runs the full ingest process for imgflip memes data
     
-    
+    Args:
+        url - the API url
+        gcs_path - the location in Cloud Storage where you want to dump the data
+        project_id - your GCP project
+        dataset - name of dataset for target BQ table
+        table - name of BQ table
+        partition (optional) - partition value for target table
+
+    Returns:
+        A Bigquery load job
     """
     client = ApiClient(url)
-
-    data = client.process()
-
+    data = client.get_data()
     records = img_flip_transform(data)
 
     write_json_gcs(data=records, gcs_path=gcs_path)
@@ -56,6 +63,5 @@ def process(
 
 
 if __name__ == "__main__":
-    
-    job = process(url=API_URL, gcs_path=GCS_PATH)
 
+    job = process(url=API_URL, gcs_path=GCS_PATH)
