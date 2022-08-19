@@ -1,5 +1,6 @@
 import pytest
 import gcsfs
+from src.data_api import ApiClient
 
 
 @pytest.fixture

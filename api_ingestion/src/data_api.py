@@ -40,13 +40,13 @@ class ApiClient:
         response_dict = json.loads(response.content.decode())
         try:
             data = response_dict["data"]
+            return data
+
         except KeyError:
             raise KeyError(
-                'Response does not contain "data" key. Is this a successfulß response?'
+                'Response does not contain "data" key. Is this a successful response?'
             )
 
-        finally:
-            return data
 
     def get_data(self, url: str = None) -> dict:
         """ Runs all steps """
