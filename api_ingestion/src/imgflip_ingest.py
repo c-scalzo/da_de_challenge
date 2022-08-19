@@ -6,6 +6,7 @@ from typing import List, Dict
 PROJECT = "gcp-stl"
 DATASET = "da_de_bootcamp_2022"
 TABLE = "imgflip_memes"
+PARTITION = "2022010112"
 GCS_PATH = "gs://da_de_bootcamp_2022/stephen_wallace/imgflip_memes.json"
 API_URL = "https://api.imgflip.com/get_memes"
 
@@ -64,4 +65,4 @@ def process(
 
 if __name__ == "__main__":
 
-    job = process(url=API_URL, gcs_path=GCS_PATH)
+    job = process(url=API_URL, gcs_path=GCS_PATH, partition=PARTITION)

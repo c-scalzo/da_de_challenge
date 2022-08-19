@@ -5,7 +5,6 @@ Creator: stephen.wallace@slalom.com
 
 import requests
 import json
-from typing import List, Dict
 
 
 class ApiClient:

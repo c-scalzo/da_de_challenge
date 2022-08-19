@@ -1,11 +1,7 @@
-import gc
-from boto import config
 import gcsfs
 from google.cloud import bigquery
 import json
 from typing import List, Dict
-
-from sqlalchemy import table
 
 
 def json_dumps_newline(data: List[Dict]) -> str:
@@ -50,6 +46,7 @@ def load_gcs_json_bigquery(
         source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
         autodetect=True,
         write_disposition="WRITE_TRUNCATE",
+        time_partitioning=bigquery.TimePartitioning(type_="HOUR"),
     )
 
     load_job = client.load_table_from_uri(
