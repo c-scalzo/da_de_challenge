@@ -6,14 +6,14 @@ from google.cloud import bigquery
 
 PROJECT = "gcp-stl"
 DATASET = "da_de_bootcamp_2022"
-TABLE = "imgflip_memes"
+TABLE = "dog_images"
 PARTITION = "2022010112"
-GCS_PATH = "gs://da_de_bootcamp_2022/stephen_wallace/imgflip_memes.json"
-API_URL = "https://api.imgflip.com/get_memes"
+GCS_PATH = "gs://da_de_bootcamp_2022/carolina_scalzo/dog_images.json"
+API_URL = "https://dog.ceo/api/breeds/image/random"
 
 
-def img_flip_transform(data: dict) -> List[Dict]:
-    """Specific transforms for the imgflip API data
+def dog_images(data: dict) -> List[Dict]:
+    """Specific transforms for the dogimages API data
     
     Args:
         data - a data dict from a response
@@ -21,7 +21,7 @@ def img_flip_transform(data: dict) -> List[Dict]:
     Returns:
         a dict transformed to the correct schema for imgflip data
     """
-    records = data["memes"]
+    records = data[""]
 
     return records
 
@@ -49,7 +49,7 @@ def process(
     """
     client = ApiClient(url)
     data = client.get_data()
-    records = img_flip_transform(data)
+    records = dog_images(data)
 
     write_json_gcs(data=records, gcs_path=gcs_path)
 
@@ -68,3 +68,4 @@ if __name__ == "__main__":
 
     result = process(url=API_URL, gcs_path=GCS_PATH, partition=PARTITION)
     print(result)
+

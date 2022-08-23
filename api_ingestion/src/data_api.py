@@ -1,6 +1,6 @@
 """ Example solution for data API ingestion to BigQuery
 
-Creator: stephen.wallace@slalom.com
+
 """
 
 import requests

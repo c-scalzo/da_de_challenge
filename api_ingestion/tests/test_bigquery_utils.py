@@ -4,7 +4,7 @@ import pandas as pd
 
 
 BUCKET = "da_de_bootcamp_2022"
-PREFIX = "stephen_wallace/json_test.json"
+PREFIX = "carolina_scalzo/json_test.json"
 PROJECT_ID = 'gcp-stl'
 DATASET = "da_de_bootcamp_2022"
 TABLE = "test_bigquery_utils"

@@ -1,7 +1,8 @@
+
 import pytest
 from src.data_api import ApiClient
 
-URL = "https://api.imgflip.com/get_memes"
+URL = "https://dog.ceo/api/breeds/image/random"
 
 
 class MockResponse:

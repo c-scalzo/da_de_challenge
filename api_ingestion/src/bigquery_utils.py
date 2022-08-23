@@ -1,4 +1,4 @@
-import gcsfs
+zsh:1: command not found: q
 from google.cloud import bigquery
 import json
 from typing import List, Dict
